@@ -10,6 +10,8 @@ Derived from LeetCode problem: https://leetcode.com/problems/maximum-subarray/ (
 
 # TODO: Find and resolve the bug in the following implementation. Create unit tests to verify your fix.
 def max_subarray_sum(nums: list[int]) -> int:
+    if(not nums):
+        raise ValueError("Input list cannot be empty.")
     """
     Function that takes in a list of integers and returns the maximum sum of any contiguous subarray.
 
@@ -22,7 +24,7 @@ def max_subarray_sum(nums: list[int]) -> int:
 
     max_current = max_global = nums[0]
     
-    for num in nums:
+    for num in nums[1:]:
         max_current = max(num, max_current + num)
         if max_current > max_global:
             max_global = max_current
