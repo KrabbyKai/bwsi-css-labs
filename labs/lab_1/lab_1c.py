@@ -19,10 +19,12 @@ def max_subarray_sum(nums: list[int]) -> int:
     Returns:
         int: The maximum sum of any contiguous subarray.
     """
+    if not nums:
+        raise ValueError("Input list cannot be empty")
 
     max_current = max_global = nums[0]
     
-    for num in nums:
+    for num in nums[1:]:
         max_current = max(num, max_current + num)
         if max_current > max_global:
             max_global = max_current
